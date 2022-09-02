@@ -1,0 +1,21 @@
+.jumbotron.text-white(style="background-color: black;")
+  .container
+    .row
+      .col-lg-12.px-4.py-1
+        h4.mb-2
+    .row.h-100.text-center.justify-content-center
+      .col-lg-12.mb-2.p-4
+        .title.text-white Projets Audiar
+        form#byGroup.form.mt-5(action="/groupView" method="GET")
+          p Choisir un groupe
+          select#find-group.form-control.form-control-lg(name="idGroup" onchange="this.form.submit()")
+            option(value="") Choisissez un groupe
+.jumbotron.mt-5
+  .container
+    .row.mt-4
+      .col-lg-12
+        .bloc-stat
+          .title-lexique Raccourcis
+          .content.mt-3
+            include shortcuts.pug
+      

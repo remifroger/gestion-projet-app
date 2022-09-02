@@ -1,0 +1,32 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        title Connexion
+        link(rel="stylesheet" href="https://use.typekit.net/gwy5biv.css" crossorigin="anonymous")
+        link(href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet")
+        link(href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet")
+        link(rel="stylesheet" href="dist/bundle.css")
+    body
+        .jumbotron.h-100(style="background-color: black;")
+            .container.h-100
+                div.row
+                    .col-sm-9.col-md-7.col-lg-5.mx-auto
+                        .card.card-signin.my-5
+                            .card-body
+                                .title.card-title.text-center Bonjour,
+                                form(class='form-signin', action='/login', method='POST').form-signin
+                                    input#inputUsername.form-control.btn-light.mt-3(type='text', name='username' class='form-control', autocomplete="username", placeholder='Nom d\'utilisateur', required, autofocus)
+                                    input#inputPassword.form-control.btn-light.mt-3(type='password', name='password' class='form-control', autocomplete="current-password", placeholder='Mot de passe', required)
+                                    if message.length
+                                        .alert.alert-danger.mt-3(role="alert") #{message}
+                                    button.button-round.submit.mt-3(type="submit") Connexion
+                                    hr.my-4
+                                    .alert.alert-secondary
+                                        | Si vous n'avez pas d'accès, prenez contact avec l'équipe technique
+                                    .links.mt-4
+                                        a.classic-link.mb-3(type="button" href="/home")
+                                            | Retour &agrave; l&apos;accueil
+        script(src="dist/bundle.js")

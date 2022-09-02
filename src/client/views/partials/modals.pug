@@ -1,0 +1,384 @@
+#panel-add-ticket.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Ajouter un ticket
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#userId(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#ticketUser
+                .form-group.mb-0
+                    p Projet rattaché
+                    select#projectChoice.form-control(required)
+                        option(value="" disabled selected) Choisissez un projet
+                .form-group.mb-0
+                    p Statut
+                    select#statutChoice.form-control(required)
+                        option(value="" disabled selected) Choisissez un statut
+                .form-group.mb-0
+                    p Urgence
+                    select#urgenceChoice.form-control(required)
+                        option(value="" disabled selected) Choisissez un degré d'urgence
+                .form-group.mb-0
+                    p Membres à notifier (choix multiple)
+                    select#membersAffectedChoice.form-control(multiple required)
+                        option(value="" disabled selected)
+                .form-group.mb-0
+                    p Date
+                    p#dateArea
+                    input#dateVal.custom-select(type="hidden" name="date" value="")
+                .form-group.mb-0
+                    label(for="ticketTextArea") Texte
+                    textarea.form-control#ticketTextArea(rows="5" required)
+                .error-content
+                    .error.mt-3
+                button.button-round#sendTicket 
+                    i.fas.fa-paper-plane.mr-2
+                    | Créer
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer
+#panel-add-comment.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Ajouter un commentaire
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#userIdComment(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#commentUser
+                .form-group.mb-0
+                    p Date
+                    p#dateAreaComment
+                    input#dateValComment.custom-select(type="hidden" name="date" value="" required)
+                .form-group.mb-0
+                    label(for="ticketTextArea") Texte
+                    textarea.form-control#commentTextArea(rows="5" required)
+                .error-content
+                    .error.mt-3
+                button.button-round#sendComment
+                    i.fas.fa-paper-plane.mr-2
+                    | Envoyer le commentaire
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer
+#panel-edit-project.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Edition du projet
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#userIdProject(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#projectUser
+                .form-group.mb-0
+                    label(for="descProject") Description
+                    textarea.form-control#descProject(rows="5" required)
+                .form-group.mb-0
+                    label(for="projectStatut") Statut
+                    select#projectStatut.form-control(required)
+                        option(value="" disabled selected) Choisissez un statut
+                .form-group.mb-0
+                    label(for="projectType") Type
+                    select#projectType.form-control(required)
+                        option(value="Projet") Projet 
+                        option(value="Routine") Routine
+                .form-group.mb-0
+                    label(for="dateDebut") Date début
+                    input.form-control#dateDebut(type="date" required)
+                .form-group.mb-0
+                    label(for="dateFin") Date fin
+                    input.form-control#dateFin(type="date" required)
+                .form-group.mb-0
+                    label(for="dossierReseau") Dossier résau
+                    input.form-control#dossierReseau(type="text" placeholder="Emplacement sur le réseau du dossier lié au projet")
+                .form-group.mb-0
+                    label(for="urlGitlab") URL GitLab
+                    input.form-control#urlGitlab(type="text" placeholder="URL GitLab")
+                .form-group.mb-0
+                    label(for="urlPreprod") URL pré-production
+                    input.form-control#urlPreprod(type="text" placeholder="URL pré-production")
+                .form-group.mb-0
+                    label(for="urlProd") URL production
+                    input.form-control#urlProd(type="text" placeholder="URL production")
+                .error-content
+                    .error.mt-3
+                button.button-round#sendEditProject
+                    i.fas.fa-paper-plane.mr-2
+                    | Editer le projet
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer
+#panel-edit-project-member.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Edition du rôle
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#memberIdProject(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#projectMember
+                .form-group.mb-0
+                    label(for="idProject") Projet concerné
+                    input.custom-select#idProject(type="hidden" name="idProject" value="")
+                    small
+                        p#labelProject
+                .form-group.mb-0
+                    label(for="roleMember") Rôle
+                    input.form-control#roleMember(type="text" required)
+                .form-group.mb-0
+                    label(for="nbJours") Nombre de jours
+                    input.form-control#nbJours(type="number" required)
+                .error-content
+                    .error.mt-3
+                button.button-round#sendEditProjectMember
+                    i.fas.fa-paper-plane.mr-2
+                    | Editer
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer
+#panel-affect-member-project.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Affecter à un projet
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#userId(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#userName
+                .form-group.mb-0
+                    p#memberName
+                .form-group.mb-0
+                    select#projectAffect.form-control(required)
+                        option(value="" disabled selected) Choisissez un projet
+                .form-group.mb-0
+                    label(for="roleMemberToAffect") Rôle
+                    input.form-control#roleMemberToAffect(type="text" required)
+                .form-group.mb-0
+                    label(for="nbJoursToAffect") Nombre de jours
+                    input.form-control#nbJoursToAffect(type="number" required)
+                .error-content
+                    .error.mt-3
+                button.button-round#affectMemberToProject
+                    i.fas.fa-paper-plane.mr-2
+                    | Affecter
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer
+#panel-remove-member-project.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Retirer d'un projet
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#userIdRmv(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#userNameRmv
+                .form-group.mb-0
+                    p#memberNameRmv
+                .form-group.mb-0
+                    select#projectRemove.form-control
+                        option(value="" disabled selected) Choisissez un projet 
+                .error-content
+                    .error.mt-3
+                button.button-round#removeMemberToProject
+                    i.fas.fa-paper-plane.mr-2
+                    | Retirer
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer
+#panel-edit-ticket.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Edition du ticket
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#userIdEdit(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#ticketUserEdit
+                .form-group.mb-0
+                    p Statut
+                    select#statutChoiceEdit.form-control(required)
+                        option(value="" disabled selected) Choisissez un statut
+                .form-group.mb-0
+                    p Urgence
+                    select#urgenceChoiceEdit.form-control(required)
+                        option(value="" disabled selected) Choisissez un degré d'urgence
+                .form-group.mb-0
+                    label(for="textTicketEdit") Texte
+                    textarea#textTicketEdit.form-control(rows="5" required)
+                .error-content
+                    .error.mt-3
+                button.button-round#sendEditTicket
+                    i.fas.fa-paper-plane.mr-2
+                    | Editer
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer
+#panel-affect-project-member.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Affecter un membre au projet
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#userIdAddProj(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#userNameAddProj
+                .form-group.mb-0
+                    p#projectNameAffect
+                .form-group.mb-0
+                    select#membersAffect.form-control
+                        option(value="" disabled selected) Choisissez un membre
+                .form-group.mb-0
+                    label(for="roleMemberToProject") Rôle
+                    input.form-control#roleMemberToProject(type="text" required)
+                .form-group.mb-0
+                    label(for="nbJoursToProject") Nombre de jours
+                    input.form-control#nbJoursToProject(type="number" required)
+                .error-content
+                    .error.mt-3
+                button.button-round#addMemberToProject
+                    i.fas.fa-paper-plane.mr-2
+                    | Affecter
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer
+#panel-delete-project-member.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Retirer un membre du projet
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#userIdDeleteProj(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#userNameDeleteProj
+                .form-group.mb-0
+                    p#projectNameDelete
+                .form-group.mb-0
+                    select#membersDelete.form-control
+                        option(value="" disabled selected) Choisissez un membre
+                .error-content
+                    .error.mt-3
+                button.button-round#applyDeleteMemberToProject
+                    i.fas.fa-paper-plane.mr-2
+                    | Retirer
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer
+#panel-add-project.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Ajouter un projet
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#userIdCreateProj(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#userNameCreateProj
+                .form-group.mb-0
+                    label(for="addProjectName") Nom du projet
+                    input.form-control#addProjectName(type="text" required)
+                .form-group.mb-0
+                    label(for="addProjectDesc") Description
+                    textarea.form-control#addProjectDesc(rows="5" required)
+                .form-group.mb-0
+                    label(for="addProjectStatut") Statut
+                    select#addProjectStatut.form-control(required)
+                        option(value="" disabled selected) Choisissez un statut
+                .form-group.mb-0
+                    label(for="addProjectType") Type
+                    select#addProjectType.form-control(required)
+                        option(value="Projet") Projet 
+                        option(value="Routine") Routine
+                .form-group.mb-0
+                    label(for="addProjectDateDebut") Date début
+                    input.form-control#addProjectDateDebut(type="date" required)
+                .form-group.mb-0
+                    label(for="addProjectDateFin") Date fin
+                    input.form-control#addProjectDateFin(type="date" required)
+                .form-group.mb-0
+                    label(for="addProjectDossierReseau") Dossier résau
+                    input.form-control#addProjectDossierReseau(type="text" placeholder="Emplacement sur le réseau du dossier lié au projet")
+                .form-group.mb-0
+                    label(for="addProjectUrlGitlab") URL GitLab
+                    input.form-control#addProjectUrlGitlab(type="text" placeholder="URL GitLab")
+                .form-group.mb-0
+                    label(for="addProjectUrlPreprod") URL pré-production
+                    input.form-control#addProjectUrlPreprod(type="text" placeholder="URL pré-production")
+                .form-group.mb-0
+                    label(for="addProjectUrlProd") URL production
+                    input.form-control#addProjectUrlProd(type="text" placeholder="URL production")
+                .error-content
+                    .error.mt-3
+                button.button-round#sendAddProject
+                    i.fas.fa-paper-plane.mr-2
+                    | Ajouter le projet
+                .my-3
+                    small Vous pourrez affecter des membres au projet dans un second temps en vous rendant sur la page du projet
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer
+#panel-add-category.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Ajouter une catégorie
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#userIdAddCategory(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#userNameAddCategory
+                .form-group.mb-0
+                    label(for="addProjectName") Nom de la catégorie
+                    input.form-control#addCategoryName(type="text" required)
+                .error-content
+                    .error.mt-3
+                button.button-round#sendAddCategory
+                    i.fas.fa-paper-plane.mr-2
+                    | Ajouter la catégorie
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer
+#panel-add-tool.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Ajouter un outil
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#userIdAddTool(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#userNameAddTool
+                .form-group.mb-0
+                    label(for="addToolName") Nom de l'outil
+                    input.form-control#addToolName(type="text" required)
+                .form-group.mb-0
+                    label(for="addToolDesc") Description
+                    textarea.form-control#addToolDesc(rows="5" required)
+                .form-group.mb-0
+                    label(for="addToolUrl") URL
+                    input.form-control#addToolUrl(type="text" required)
+                .error-content
+                    .error.mt-3
+                button.button-round#sendAddTool
+                    i.fas.fa-paper-plane.mr-2
+                    | Ajouter l'outil
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer
+#panel-add-comment-tool.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Ajouter un commentaire
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#userIdCommentTool(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#commentUserTool
+                .form-group.mb-0
+                    p Date
+                    p#dateAreaCommentTool
+                    input#dateValCommentTool.custom-select(type="hidden" name="date" value="" required)
+                .form-group.mb-0
+                    label(for="ticketTextAreaTool") Texte
+                    textarea.form-control#commentTextAreaTool(rows="5" required)
+                .error-content
+                    .error.mt-3
+                button.button-round#sendCommentTool
+                    i.fas.fa-paper-plane.mr-2
+                    | Envoyer le commentaire
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer
+#panel-project-add-link.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Lier à un projet
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#linkUserId(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#linkUserName
+                .form-group.mb-0
+                    select#linkProject.form-control(required)
+                        option(value="" disabled selected) Choisissez un projet
+                .error-content
+                    .error.mt-3
+                button.button-round#affectProjectLink
+                    i.fas.fa-paper-plane.mr-2
+                    | Relier
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer
+#panel-project-cut-link.modal.fade(tabindex="-1" role="dialog" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
+        .modal-content
+            .modal-header Délier d'un projet
+            .modal-body.pt-4.pl-4.pr-4
+                input.custom-select#cutLinkUserId(type="hidden" name="idMember" value="")
+                .lexique-title.mb-3#cutLinkUserName
+                .form-group.mb-0
+                    select#cutLinkProject.form-control(required)
+                        option(value="" disabled selected) Choisissez un projet
+                .error-content
+                    .error.mt-3
+                button.button-round#sendCutProjectLink
+                    i.fas.fa-paper-plane.mr-2
+                    | Délier
+            .modal-footer
+                button.button-round(type="button" data-dismiss="modal") Fermer

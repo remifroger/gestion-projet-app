@@ -1,0 +1,16 @@
+nav.navbar.navbar-expand-lg.navbar-light.navbar-fixed-top
+  .navbar-brand.mr-4.pt-0
+    a(href="/home")
+      .title.small Gestion de projets
+  button.navbar-toggler.m-3(type='button' data-toggle='collapse' data-target='#navbarToggler' aria-controls='navbarToggler' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarToggler.collapse.navbar-collapse.px-3
+    ul.navbar-nav.mr-auto.mt-2.mt-lg-0.pt-3.pt-lg-0
+    .mt-4.mt-lg-0.pb-3.pb-lg-0
+      ul.nav.navbar-nav.flex-row.justify-content-start.flex-nowrap.align-items-center
+        if user
+          li.nav-item
+            a.classic-link(href="/logout") Déconnexion
+        else
+          li.nav-item
+            a.classic-link(href="/login") Connexion

@@ -1,0 +1,68 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title Gestion de projets
+    link(rel="stylesheet" href="https://use.typekit.net/gwy5biv.css" crossorigin="anonymous")
+    link(href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet")
+    link(rel="stylesheet" href="dist/bundle.css")
+  body
+    .big-nav.text-white
+      include partials/header.pug
+    .jumbotron.pb-0
+      .container
+        .row 
+          .col
+            .content
+              include partials/shortcuts.pug
+    .jumbotron
+      .container
+        .row
+          .col-lg-12.px-4.py-1
+            h4.mb-2
+        .row.h-100.justify-content-center
+          .col-lg-12.mb-2.p-4
+            h3
+              #project-name
+            hr
+        .row.mb-5
+            .col-lg-12
+                .bloc-stat#projectGeneral
+                    .lexique-title.mb-4 Informations
+                    #project-infos.mt-3
+        .row.mb-5
+            .col-lg-12
+                .bloc-stat#projectMembers
+                    .lexique-title.mb-4 Membres du projet
+                    ul.list-group.list-group-flush#listProjectMembers
+                    button.button-round.mr-3.my-2#affectMemberToProject(data-toggle="modal" data-target="#panel-affect-project-member") + Ajouter un membre
+                    button.button-round.mr-3.my-2#deleteMemberToProject(data-toggle="modal" data-target="#panel-delete-project-member") + Retirer un membre
+        .row.mb-5
+            .col-lg-12
+                .bloc-stat#projectLinks
+                    .lexique-title.mb-4 Projets associés
+                    ul.list-group.list-group-flush#listProjectLinks
+                    button.button-round.mr-3.my-2#addProjectLink(data-toggle="modal" data-target="#panel-project-add-link") + Relier à un projet
+                    button.button-round.mr-3.my-2#cutProjectLink(data-toggle="modal" data-target="#panel-project-cut-link") + Délier d'un projet
+        .row.mb-5
+            .col-lg-12
+                .bloc-stat#projectTasks
+                    .lexique-title.mb-4 Suivi
+                    .row.mb-5
+                        .col-lg-4#ticketsOpen
+                            p.mb-4 Tickets ouverts
+                            ul.list-group.list-group-flush#listTicketsOpen
+                        .col-lg-4#ticketsWip
+                            p.mb-4 En cours
+                            ul.list-group.list-group-flush#listTicketsWip
+                        .col-lg-4#ticketsClosed
+                            p.mb-4 Clôturés
+                            ul.list-group.list-group-flush#listTicketsClosed
+                    button.button-round.mr-3.my-2#addTicket(data-toggle="modal" data-target="#panel-add-ticket") + Créer un ticket
+    include partials/modals.pug
+    .footer
+      include partials/footer.pug
+    script(src="dist/bundle.js")

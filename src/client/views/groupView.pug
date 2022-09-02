@@ -1,0 +1,70 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title Gestion de projets
+    link(rel="stylesheet" href="https://use.typekit.net/gwy5biv.css" crossorigin="anonymous")
+    link(href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet")
+    link(rel="stylesheet" href="dist/bundle.css")
+  body
+    .big-nav.text-white
+      include partials/header.pug
+    .jumbotron.pb-0
+      .container
+        .row 
+          .col
+            .content
+              include partials/shortcuts.pug
+        .row
+          .col-lg-12.px-4.py-1
+            h4.mb-2
+        .row.h-100.justify-content-center
+          .col-lg-12.mb-2.p-4
+            h3
+              #group-name
+            hr
+        .row.mb-5
+            .col-lg-6
+                .bloc-stat#byMember
+                    .lexique-title.mb-4 Par membre
+                    ul.list-group.list-group-flush#listMembers
+            .col-lg-6
+                .bloc-stat#byProject
+                    .lexique-title.mb-4 Par projet
+                      small
+                        a.ml-3.mb-3(href="/allProjects?type=Projet") Voir tous les projets
+                    ul.list-group.list-group-flush#listProjects
+                    button.button-round.mr-3.my-2#addProject(data-toggle="modal" data-target="#panel-add-project") + Ajouter un projet
+        .row.mb-5
+            .col-lg-6
+                .bloc-stat#tickets
+                    .lexique-title.mb-4 Derniers tickets 
+                        small
+                            a.ml-3.mb-3(href="/allTickets") Voir tous les tickets
+                    ul.list-group.list-group-flush#listTickets
+                    button.button-round.mr-3.my-2#addTicket(data-toggle="modal" data-target="#panel-add-ticket") + Créer un ticket
+            .col-lg-6
+                .bloc-stat#byBackend
+                    .lexique-title.mb-4 Routines
+                      .badge.badge-warning.ml-3 Tâches de fond
+                      small
+                        a.ml-3.mb-3(href="/allProjects?type=Routine") Voir toutes les routines
+                    ul.list-group.list-group-flush#listBackend
+                    button.button-round.mr-3.my-2#addBackend(data-toggle="modal" data-target="#panel-add-project") + Créer une routine
+        .row.mb-5
+            .col-lg-6
+                .bloc-stat#events
+                    .lexique-title.mb-4 Événements
+                    ul.list-group.list-group-flush#listEvents
+            .col-lg-6
+                .bloc-stat#categories
+                    .lexique-title.mb-4 Boîte à outils
+                    ul.list-group.list-group-flush#listCategories
+                    button.button-round.mr-3.my-2#addCategory(data-toggle="modal" data-target="#panel-add-category") + Créer une catégorie
+    include partials/modals.pug
+    .footer
+      include partials/footer.pug
+    script(src="dist/bundle.js")
