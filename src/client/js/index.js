@@ -257,9 +257,9 @@ $(function () {
                             document.querySelector(target).innerHTML = ''
                             res.data.forEach((item) => {
                                 document.querySelector(target).insertAdjacentHTML('beforeend',
-                                    `<div class="list-group-item list-group-item-action flex-column align-items-start" id=${item.id_projet}>
+                                    `<div class="list-group-item list-group-item-action flex-column align-items-start mb-4 border-bottom-0" id=${item.id_projet}>
                                 <div class="d-flex w-100 justify-content-between">
-                                    <h6 class="mb-1">${item.lib_projet}</h6>
+                                    <h5 class="mb-1">${item.lib_projet}</h5>
                                 </div>
                                 <div class="my-3">
                                     <small><span class="badge text-${res.data[0].statut_class} border border-${res.data[0].statut_class}">${item.lib_statut}</span></small>
