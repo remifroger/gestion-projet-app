@@ -11,6 +11,18 @@
 
 L'outil fonctionne avec une base de données PostgreSQL dont il faut renseigner votre propre instance dans .env (ou .env.sample). Ensuite, exécutez le SQL situé dans data/data.sql. Les données seront regroupées dans un schéma nommé _a_gestion_projet. Vous pourrez modifier les membres dans la table membres. Par défaut les mots de passe de chaque membre correspondent à 'test'. Pensez à les modifier et à insérer un mot de passe crypté (https://bcrypt.online/).
 
+Modifiez les variables d'environnement en fonction du votre. Voici un exemple de paramétrage avec une BDD PostgreSQL locale (les variables commençant par PG concernent PostgreSQL). `PGTABLEUSER` concerne la table contenant les membres qui auront accès à l'application (elle est créée par l'exécution de data/data.sql).
+```
+NODE_ENV=development
+PORT=3000
+SESSION=secret
+PGHOST=localhost
+PGDATABASE=apps
+PGPORT=5432
+PGUSER=postgres
+PGPASSWORD=postgres
+PGTABLEUSER=_a_gestion_projet.membres
+```
 # Documentation
 
 Il s'agit d'un outil de gestion de projets. Chaque groupe de travail contient des membres, des projets et des routines. Les projets et routines sont associés aux membres. Des tickets de suivi permettent de suivre l'avancement des projets/routines et sont associés aux membres. Chaque ticket contient un système de notification envoyant un mail aux membres associés au ticket (le mail est renseigné au préalable dans la table PostgreSQL des membres, voir plus bas). Au niveau de groupe, une boîte à outils permet de partager des outils et liens à l'ensemble du groupe.
