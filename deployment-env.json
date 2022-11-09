@@ -1,5 +1,5 @@
 {
     "local": "../../.env",
-    "pre-prod": "/etc/dataudiar-config/gestion-projet-app.pre-production.env",
-    "prod": "/etc/dataudiar-config/gestion-projet-app.production.env"
+    "pre-prod": "",
+    "prod": "/etc/node-apur-app-config/gestion-projet-app.production.env"
 }
