@@ -35,7 +35,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "alasql": "~0.6.3",
-    "assets-dataudiar": "file:..\\assets",
+    "assets-dataudiar": "file:../assets",
     "bcrypt": "~5.0.0",
     "blueimp-canvas-to-blob": "~3.27.0",
     "body-parser": "~1.19.0",
