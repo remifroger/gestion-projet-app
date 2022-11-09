@@ -15,10 +15,20 @@ import 'bootstrap-select/dist/css/bootstrap-select.min.css'
 import '../css/main.css'
 import typeahead from '@ceyarts/bootstrap-typeahead'
 
-import { scrollToTop, goToElement, waitForEl, getUrlParameter, getAllUrlParameters } from 'assets-dataudiar/js/navigation'
-import { multipleFiltersData } from 'assets-dataudiar/js/data-operations'
-
 $(function () {
+    const getUrlParameter = (sParam) => {
+        let sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=')
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1])
+            }
+        }
+    }
+
     if (document.querySelector('form#byGroup')) {
         fetch(`/api/groups`)
             .then(response => {
